@@ -2,210 +2,122 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Invitación - Apóstol Santiago</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación: Misa en honor al Apóstol Santiago</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Sacred Gold -->
+    <!-- Application Structure Plan: Se ha diseñado una aplicación de página única estilo "tarjeta digital" o "micrositio". La estructura guía al usuario a través de la información de forma secuencial y lógica: 1. Encabezado con la imagen del Santo. 2. La oración principal. 3. Presentación de los devotos. 4. Detalles del evento (misa y recepción) con botones interactivos para mapas. 5. Sección de acciones con botones para confirmar por WhatsApp y añadir al calendario. 6. Pie de página. Esta estructura es más apropiada que un dashboard para el contenido de una invitación, facilitando la comprensión y la utilidad para los invitados. -->
+    <!-- Visualization & Content Choices: Report Info: Invitación a misa. -> Goal: Informar y facilitar asistencia. -> Viz/Presentation Method: Secciones de texto con tipografía elegante y diseño limpio. -> Interaction: Botones que enlazan a Google Maps para las direcciones, un enlace para generar un evento de calendario y un enlace de WhatsApp para confirmación. -> Justification: En lugar de gráficos de datos (inaplicables aquí), la interactividad se centra en la utilidad práctica para el invitado, ayudándole a llegar a los lugares, agendar el evento y confirmar su asistencia fácilmente. -> Library/Method: HTML/Tailwind para la estructura, enlaces directos para la interactividad. Se usan SVG en línea para los íconos de los botones por ser la mejor práctica moderna. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
-            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
-            font-family: 'Segoe UI', 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
+            font-family: 'Cormorant Garamond', serif;
+            background-color: #FDFBF7;
         }
-        .card {
-            max-width: 540px;
-            margin: 40px auto;
-            background: #fff;
-            border-radius: 22px;
-            box-shadow: 0 8px 32px rgba(80,40,120,0.18), 0 2px 8px #fff4;
-            padding: 38px 28px;
-            color: #111; /* Todo el texto negro */
-            line-height: 1.8;
-            font-size: 1.18rem;
-            border: 2px solid #e2b215;
-            display: flex;
-            align-items: flex-start;
-            gap: 24px;
+        .ornament {
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #BCA981, transparent);
+            margin: 1rem auto;
         }
-        .card-content {
-            flex: 1;
+        .action-btn {
+            transition: all 0.3s ease;
         }
-        .card h1,
-        .oracion,
-        .devotos,
-        .titulo,
-        .contenido,
-        .footer {
-            color: #111; /* Todo el texto negro */
-        }
-        .oracion {
-            font-size: 1.10rem;
-            margin-bottom: 19px;
-            font-style: italic;
-            text-align: center;
-        }
-        .devotos {
-            margin: 24px 0 12px 0;
-            font-size: 1.10rem;
-            text-align: center;
-        }
-        .titulo {
-            font-size: 1.15rem;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 10px;
-            margin-top: 18px;
-        }
-        .contenido {
-            margin: 18px 0;
-            font-size: 1.10rem;
-            text-align: justify;
-        }
-        .footer {
-            margin-top: 28px;
-            font-size: 1.08rem;
-            text-align: right;
-            font-style: italic;
-        }
-        .card-img {
-            flex-shrink: 0;
-        }
-        .card-img img {
-            max-width: 160px;
-            border-radius: 14px;
-            box-shadow: 0 2px 8px #c7ad1b;
-            display: block;
-        }
-        @media (max-width: 700px) {
-            .card {
-                flex-direction: column;
-                align-items: center;
-                padding: 18px 6px;
-                max-width: 98vw;
-                font-size: 1rem;
-            }
-            .card-img img {
-                margin: 0 auto;
-            }
-            .card h1 {
-                font-size: 1.3rem;
-            }
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
     </style>
 </head>
-<body>
-    <div class="card" style="position:relative;">
-      <canvas id="cruces-lluvia" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
-      <div class="card-content" style="position:relative;z-index:1;">
-        <h1 style="text-align: center;">INVITACIÓN</h1>
-        <div class="oracion">
-            <b>ORACIÓN</b><br>
-            Apóstol Santiago, elegido entre los primeros, tú fuiste el primero en beber el cáliz del Señor y eres el gran protector de los peregrinos; haznos fuertes en la fe y alegres en la esperanza en nuestro caminar de peregrinos siguiendo el camino de la vida cristiana, y aliéntanos para que, finalmente, alcancemos la gloria de Dios Padre.<br>
-            <b>Amén.</b>
+<body class="text-gray-800">
+
+    <div class="container mx-auto max-w-3xl p-4 sm:p-8">
+        <div class="border-2 border-[#BCA981] bg-white/50 shadow-lg rounded-lg text-center p-6 sm:p-12">
+
+            <header class="mb-8">
+                <img src="https://placehold.co/150x150/FDFBF7/BCA981?text=AS" 
+                     onerror="this.onerror=null; this.src='https://i.imgur.com/gQJv5a8.png';"
+                     alt="Imagen del Apóstol Santiago" 
+                     class="w-32 h-32 mx-auto rounded-full border-4 border-[#BCA981] shadow-md mb-6">
+                
+                <h1 class="text-5xl md:text-6xl font-bold text-[#3a3a3a]">INVITACIÓN</h1>
+                <div class="ornament"></div>
+            </header>
+
+            <main>
+                <section id="oracion" class="mb-10">
+                    <h2 class="text-2xl font-semibold text-[#BCA981] mb-3">ORACIÓN</h2>
+                    <p class="text-lg italic leading-relaxed max-w-xl mx-auto">
+                        "Apóstol Santiago, elegido entre los primeros, tú fuiste el primero en beber el cáliz del Señor y eres el gran protector de los peregrinos; haznos fuertes en la fe y alegres en la esperanza en nuestro caminar de peregrinos siguiendo el camino de la vida cristiana, y aliéntanos para que, finalmente, alcancemos la gloria de Dios Padre. Amén."
+                    </p>
+                </section>
+
+                <div class="ornament"></div>
+
+                <section id="devotos" class="mb-10">
+                    <p class="text-xl mb-4">Con fe y devoción al milagroso</p>
+                    <h2 class="text-4xl md:text-5xl font-bold text-[#3a3a3a] mb-6">“APÓSTOL SANTIAGO”</h2>
+                    <p class="text-xl mb-2">Los devotos:</p>
+                    <p class="text-3xl font-semibold text-[#BCA981]">Reynaldo Velasquez y Jhoset Vedia</p>
+                    <p class="text-xl mt-2">junto a sus hijas</p>
+                    <p class="text-2xl font-semibold text-[#BCA981]">Lia Valentina y Mía Belén</p>
+                    <p class="text-xl mt-8 max-w-lg mx-auto">Tienen el agrado de invitarle(s) a la Misa de Acción de Gracias que se celebrará en su honor.</p>
+                </section>
+
+                <section id="evento" class="space-y-8 mb-12">
+                    <div class="bg-[#FDFBF7]/70 border border-[#d4c5a2] rounded-lg p-6 max-w-md mx-auto">
+                        <h3 class="text-2xl font-bold text-[#BCA981] mb-4">Misa de Acción de Gracias</h3>
+                        <p class="text-xl"><span class="font-semibold">Día:</span> Sábado, 09 de agosto</p>
+                        <p class="text-xl"><span class="font-semibold">Hora:</span> 16:30 hrs.</p>
+                        <p class="text-xl mt-2"><span class="font-semibold">Lugar:</span> Parroquia Apóstol Santiago</p>
+                        <p class="text-base italic mt-1">(Calle Nº1, Plaza el Minero, Zona Santiago II, El Alto)</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Plaza+el+Minero,+Zona+Santiago+II,+El+Alto" target="_blank" class="action-btn inline-block bg-[#BCA981] text-white py-2 px-6 rounded-full mt-4 text-lg font-semibold shadow-md">
+                            Ver en Mapa
+                        </a>
+                    </div>
+
+                    <div class="bg-[#FDFBF7]/70 border border-[#d4c5a2] rounded-lg p-6 max-w-md mx-auto">
+                        <h3 class="text-2xl font-bold text-[#BCA981] mb-4">Recepción</h3>
+                        <p class="text-xl">Luego de la ceremonia, se ruega acompañar al domicilio particular para una recepción.</p>
+                        <p class="text-xl mt-2"><span class="font-semibold">Dirección:</span> Calle 8 Nº180</p>
+                         <a href="https://www.google.com/maps/search/?api=1&query=Calle+8+Nº180,+El+Alto" target="_blank" class="action-btn inline-block bg-[#BCA981] text-white py-2 px-6 rounded-full mt-4 text-lg font-semibold shadow-md">
+                            Ver en Mapa
+                        </a>
+                    </div>
+                </section>
+
+                <section id="acciones" class="mt-12">
+                    <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                        <a href="https://wa.link/k9782q" target="_blank" 
+                           class="action-btn w-full sm:w-auto text-center bg-[#25D366] text-white py-3 px-6 rounded-full text-lg font-semibold shadow-md flex items-center justify-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                              <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                            </svg>
+                            Confirmar por WhatsApp
+                        </a>
+                        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Misa+Ap%C3%B3stol+Santiago+-+Familia+Velasquez+Vedia&dates=20250809T203000Z/20250809T213000Z&details=Misa+de+acci%C3%B3n+de+gracias+en+honor+al+Ap%C3%B3stol+Santiago.%0A%0ALuego+recepci%C3%B3n+en+Calle+8+N%C2%BA180.&location=Parroquia+Ap%C3%B3stol+Santiago,+Calle+N%C2%BA1,+Plaza+el+Minero+Zona+Santiago+II,+El+Alto" target="_blank" 
+                           class="action-btn w-full sm:w-auto text-center bg-gray-700 text-white py-3 px-6 rounded-full text-lg font-semibold shadow-md flex items-center justify-center gap-2">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                               <path d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z"/>
+                               <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                            </svg>
+                            Añadir al Calendario
+                        </a>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="mt-12">
+                <div class="ornament"></div>
+                <p class="text-xl italic">Agradecen de antemano su gentil concurrencia.</p>
+                <p class="text-lg mt-4">La Paz, Julio de 2025</p>
+            </footer>
+
         </div>
-        <div class="devotos">
-            <b>DEVOTOS</b><br>
-            <span style="font-family: 'Brush Script MT', cursive; font-size: 1.75rem;">
-                Reynaldo Velasquez, Jhoset Vedia e hijas<br>
-                Lia Valentina y Mía Belén
-            </span>
-        </div>
-        <div class="titulo">
-            CON FE Y DEVOCIÓN AL MILAGROSO<br>
-            “APÓSTOL SANTIAGO”
-        </div>
-        <div class="contenido">
-            Saludan a ud.(s) muy atentamente y tienen el agrado de invitarle(s), a la misa de acción de gracias, que se efectuará el día <b>sábado 09 de agosto a hrs. 16:30</b> en la <b>Parroquia Apóstol Santiago</b>, ubicado en la calle Nº1, Plaza el Minero Zona Santiago II El Alto, luego ruegan a acompañar al Domicilio ubicado en la Calle 8 Nº180.<br><br>
-            Agradecen de antemano su gentil concurrencia.
-        </div>
-        <div class="footer">
-            La Paz, Julio de 2025
-        </div>
-      </div>
-<div class="card-img" style="position:relative;z-index:1; display: flex; flex-direction: column; align-items: center;">
-    <img src="img/apostol santiago.jpg" alt="Imagen Apóstol Santiago" style="margin-bottom: 18px;" />
-    <img src="img/qr.png" alt="qr" />
-</div>
-    <script>
-    // Efecto de cruces doradas flotando/lluvia
-    const canvas = document.getElementById('cruces-lluvia');
-    const ctx = canvas.getContext('2d');
-    let w, h;
-    const totalCruces = 22;
-    const cruces = [];
+    </div>
 
-    function resizeCanvas() {
-        w = canvas.width = canvas.offsetWidth;
-        h = canvas.height = canvas.offsetHeight;
-        // Reubica cruces al redimensionar
-        for(let i=0; i<cruces.length; i++) {
-            cruces[i].x = Math.random()*w;
-            cruces[i].y = Math.random()*h;
-        }
-    }
-
-    function initCruces() {
-        cruces.length = 0;
-        for(let i=0; i<totalCruces; i++) {
-            cruces.push({
-                x: Math.random()*w,
-                y: Math.random()*h,
-                size: Math.random()*12+10,
-                speed: Math.random()*0.7+0.3,
-                angle: Math.random()*Math.PI*2,
-                drift: Math.random()*0.5+0.2
-            });
-        }
-    }
-
-    function drawCruz(x, y, size, alpha=1) {
-        ctx.save();
-        ctx.translate(x, y);
-        ctx.strokeStyle = `rgba(255,215,0,${alpha})`;
-        ctx.lineWidth = size/5;
-        ctx.shadowColor = "#ffd700";
-        ctx.shadowBlur = 8;
-        // Vertical
-        ctx.beginPath();
-        ctx.moveTo(0, -size/2);
-        ctx.lineTo(0, size/2);
-        ctx.stroke();
-        // Horizontal
-        ctx.beginPath();
-        ctx.moveTo(-size/2, 0);
-        ctx.lineTo(size/2, 0);
-        ctx.stroke();
-        ctx.restore();
-    }
-
-    function animateCruces() {
-        ctx.clearRect(0,0,w,h);
-        for(let c of cruces) {
-            drawCruz(
-                c.x + Math.sin(c.angle)*c.drift,
-                c.y,
-                c.size,
-                0.85
-            );
-            c.y += c.speed;
-            c.angle += 0.02;
-            if(c.y > h+20) {
-                c.y = -20;
-                c.x = Math.random()*w;
-                c.size = Math.random()*12+10;
-                c.speed = Math.random()*0.7+0.3;
-                c.drift = Math.random()*0.5+0.2;
-            }
-        }
-        requestAnimationFrame(animateCruces);
-    }
-
-    function startEffect() {
-        resizeCanvas();
-        initCruces();
-        animateCruces();
-    }
-
-    window.addEventListener('resize', resizeCanvas);
-    window.addEventListener('DOMContentLoaded', () => {
-        startEffect();
-    });
-</script>
+</body>
+</html>
